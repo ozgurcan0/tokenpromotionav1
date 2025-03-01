@@ -23,6 +23,8 @@
     "three": "^0.174.0"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4"
+    "@tailwindcss/postcss": "^4",
+    "critters": "^0.0.20",
+    "pino-pretty": "^10.3.1"
   }
 }
