@@ -1,64 +1,58 @@
 'use client';
-import { useInView } from 'react-intersection-observer';
-import Image from 'next/image';
+import { motion } from 'framer-motion';
+import CoinAnimation from './CoinAnimation';
 
 export default function Vision() {
-  const { ref, inView } = useInView({
-    threshold: 0.3,
-    triggerOnce: true
-  });
-
-  const visionPoints = [
-    {
-      title: "Animal Welfare",
-      description: "Using Solana's high-performance blockchain to create a transparent and efficient system for supporting animal welfare projects worldwide.",
-      icon: "/icons/pets.svg"
-    },
-    {
-      title: "Fast & Efficient",
-      description: "Built on Solana for lightning-fast transactions and minimal fees, making it easier to contribute to animal welfare causes.",
-      icon: "/icons/speed.svg"
-    },
-    {
-      title: "Community Driven",
-      description: "A strong community of animal lovers and Solana enthusiasts working together to make a real difference in animals' lives.",
-      icon: "/icons/community.svg"
-    }
-  ];
-
-  const features = [
-    "Lightning Fast Transactions on Solana",
-    "Ultra-Low Transaction Fees",
-    "Transparent Donation Tracking",
-    "Community Governance",
-    "Automated Charity Distributions"
-  ];
-
   return (
-    <div className="vision-section">
-      <div className="container">
-        <h2 className="section-title gradient-text">Our Vision</h2>
-        
-        <div className={`vision-grid ${inView ? 'visible' : ''}`} ref={ref}>
-          {visionPoints.map((point, index) => (
-            <div key={index} className="vision-card glass-effect">
-              <div className="vision-icon">
-                <Image src={point.icon} width={48} height={48} alt={point.title} />
-              </div>
-              <h3>{point.title}</h3>
-              <p>{point.description}</p>
+    <div className="container">
+      <div className="vision-layout">
+        <motion.div 
+          className="vision-left"
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <CoinAnimation />
+          <div className="stats-badges">
+            <div className="stat-badge glow-effect">
+              <span className="stat-value">$1M+</span>
+              <span className="stat-label">Market Cap</span>
             </div>
-          ))}
-        </div>
+            <div className="stat-badge glow-effect">
+              <span className="stat-value">5000+</span>
+              <span className="stat-label">Holders</span>
+            </div>
+          </div>
+        </motion.div>
 
-        <div className="vision-features">
-          <h3 className="features-title">Why Walking Cat Token?</h3>
-          <ul className="features-list">
-            {features.map((feature, index) => (
-              <li key={index}>{feature}</li>
-            ))}
-          </ul>
-        </div>
+        <motion.div 
+          className="vision-right"
+          initial={{ opacity: 0, x: 50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <h2 className="gradient-text">Our Vision</h2>
+          <p className="vision-text">
+            Walking Cat Token aims to revolutionize animal welfare through blockchain technology.
+            We're creating a decentralized ecosystem that directly supports animal shelters and welfare initiatives.
+          </p>
+          <div className="feature-list">
+            <div className="feature-item">
+              <div className="feature-icon">🔒</div>
+              <div className="feature-content">
+                <h3>Secure & Audited</h3>
+                <p>Smart contract verified and audited for maximum security</p>
+              </div>
+            </div>
+            <div className="feature-item">
+              <div className="feature-icon">🌍</div>
+              <div className="feature-content">
+                <h3>Community Driven</h3>
+                <p>Governance decisions made by token holders</p>
+              </div>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </div>
   );

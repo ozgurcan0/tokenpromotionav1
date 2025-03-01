@@ -36,7 +36,9 @@ export default function FAQ() {
             >
               <div className="faq-question">
                 <h3>{faq.question}</h3>
-                <span className="icon">+</span>
+                <span className="icon" role="button" aria-label="Toggle answer">
+                  {activeIndex === index ? '×' : '+'}
+                </span>
               </div>
               <div className="faq-answer">
                 <p>{faq.answer}</p>

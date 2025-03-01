@@ -33,9 +33,12 @@ export default function Navbar() {
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      const offsetTop = element.offsetTop;
+      const headerOffset = 100;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+      
       window.scrollTo({
-        top: offsetTop - 80,
+        top: offsetPosition,
         behavior: 'smooth'
       });
     }
