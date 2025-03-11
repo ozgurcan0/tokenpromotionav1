@@ -51,6 +51,7 @@ export default function Navbar() {
 
   const menuItems = [
     { id: 'home', label: 'Home' },
+    { id: 'about', label: 'About' }, // About bağlantısı eklendi
     { id: 'vision', label: 'Vision' },
     { id: 'features', label: 'Features' },
     { id: 'tokenomics', label: 'Tokenomics' },

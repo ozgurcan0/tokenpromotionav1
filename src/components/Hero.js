@@ -70,11 +70,11 @@ export default function Hero() {
           
           <h1 className="hero-title gradient-text">
             Walking Cat Token
-            <span className="hero-subtitle">First Animal Welfare Token on Solana</span>
+            <span className="hero-subtitle">A Better World for Our Paw Friends.</span>
           </h1>
 
           <p className="hero-description">
-            Revolutionary Solana Token Empowering Animal Welfare Through Blockchain Technology
+          Walking Cat Token aims to provide high efficiency, high profit and transparency to investors by combining blockchain technology and paw love.
           </p>
 
           <div className="hero-buttons">

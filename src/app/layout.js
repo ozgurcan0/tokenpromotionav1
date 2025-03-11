@@ -15,11 +15,11 @@ export const metadata = {
     default: 'Walking Cat Token | WKCT',
     template: '%s | Walking Cat Token'
   },
-  description: 'First Animal Welfare Token on Solana - Empowering animal welfare through blockchain technology',
+  description: 'A Better World for Our Paw Friends.',
   keywords: ['solana', 'crypto', 'token', 'animal welfare', 'blockchain', 'cryptocurrency'],
   openGraph: {
     title: 'Walking Cat Token',
-    description: 'Revolutionary Solana Token for Animal Welfare',
+    description: 'Walking Cat Token aims to provide high efficiency, high profit and transparency to investors by combining blockchain technology and paw love.',
     images: ['/og-image.jpg'],
   },
   twitter: {

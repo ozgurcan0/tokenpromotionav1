@@ -276,7 +276,7 @@ section {
 .button.secondary {
   background: transparent;
   border: 2px solid var(--primary-color);
-  color: var(--primary-color);
+  color: var (--primary-color);
 }
 
 /* Wallet Connect Styles */
@@ -1368,6 +1368,19 @@ p {
   filter: drop-shadow(0 0 12px var(--primary-color));
 }
 
+.stat-icon svg {
+  width: 32px;
+  height: 32px;
+  stroke: var(--primary-color);
+  stroke-width: 2;
+  transition: all 0.3s ease;
+}
+
+.stat-card:hover .stat-icon svg {
+  transform: scale(1.1);
+  stroke: var(--text-light);
+}
+
 .stat-content {
   flex: 1;
 }
@@ -1705,60 +1718,38 @@ p {
   inset: 0;
   pointer-events: none;
   z-index: 0;
-  overflow: hidden;
-  opacity: 0.8; /* Increased opacity */
+  opacity: 0.5;
   background: var(--dark-bg);
 }
 
 .circle {
   position: absolute;
   border-radius: 50%;
-  filter: blur(60px); /* Reduced blur */
+  filter: blur(80px);
+  will-change: transform;
+  transform: translateZ(0);
 }
 
 .circle-1 {
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(0, 245, 255, 0.3), transparent 70%);
-  top: -200px;
-  left: -100px;
-  animation: floatAnimation 15s infinite alternate;
-  opacity: 0.8;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(0, 245, 255, 0.2), transparent 70%);
+  top: -100px;
+  left: -50px;
+  animation: floatAnimation 20s infinite alternate;
 }
 
 .circle-2 {
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(112, 0, 255, 0.3), transparent 70%);
-  bottom: 10%;
-  right: -50px;
-  animation: floatAnimation 20s infinite alternate-reverse;
-  opacity: 0.8;
-}
-
-.circle-3 {
   width: 400px;
   height: 400px;
-  background: radial-gradient(circle, rgba(240, 171, 252, 0.3), transparent 70%);
-  top: 40%;
-  left: 20%;
-  animation: floatAnimation 18s infinite alternate;
-  opacity: 0.8;
-}
-
-.circle-4 {
-  width: 300px;
-  height: 300px;
-  background: radial-gradient(circle, rgba(0, 245, 255, 0.2), transparent 70%);
-  bottom: 20%;
-  left: 10%;
+  background: radial-gradient(circle, rgba(112, 0, 255, 0.2), transparent 70%);
+  bottom: 10%;
+  right: -50px;
   animation: floatAnimation 25s infinite alternate-reverse;
-  opacity: 0.8;
 }
 
 @keyframes floatAnimation {
-  0% { transform: translate(0, 0) rotate(0deg); }
-  100% { transform: translate(30px, 30px) rotate(5deg); }
+  to { transform: translate(20px, 20px); }
 }
 
 /* Coin Animation Styles */
@@ -1894,7 +1885,7 @@ p {
   inset: 0;
   background: linear-gradient(to bottom,
     rgba(6, 7, 20, 0.7),
-    var(--dark-bg)
+    var (--dark-bg)
   );
 }
 
@@ -2143,6 +2134,8 @@ p {
   position: fixed;
   inset: 0;
   pointer-events: none;
+  opacity: 0.5;
+  will-change: transform;
 }
 
 .stars {
@@ -2150,60 +2143,48 @@ p {
   inset: 0;
   background-repeat: repeat;
   background-color: transparent;
-  animation: twinkle 5s infinite;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 .stars-1 {
   background-image: radial-gradient(1px 1px at 25% 25%, white 100%, transparent),
-                    radial-gradient(1px 1px at 50% 50%, white 100%, transparent),
-                    radial-gradient(2px 2px at 75% 75%, var(--primary-color) 100%, transparent);
-  background-size: 200px 200px;
-  opacity: 0.8;
-  animation: stars-move-1 100s linear infinite;
+                    radial-gradient(1px 1px at 75% 75%, var(--primary-color) 100%, transparent);
+  background-size: 250px 250px;
+  animation: stars-move-1 150s linear infinite;
 }
 
 .stars-2 {
   background-image: radial-gradient(1.5px 1.5px at 15% 15%, white 100%, transparent),
-                    radial-gradient(1.5px 1.5px at 60% 40%, white 100%, transparent),
-                    radial-gradient(2px 2px at 85% 65%, var(--secondary-color) 100%, transparent);
+                    radial-gradient(2px 2px at 85% 85%, var(--secondary-color) 100%, transparent);
   background-size: 300px 300px;
-  opacity: 0.6;
-  animation: stars-move-2 150s linear infinite;
-}
-
-.stars-3 {
-  background-image: radial-gradient(1px 1px at 35% 85%, white 100%, transparent),
-                    radial-gradient(1px 1px at 70% 20%, white 100%, transparent),
-                    radial-gradient(1.5px 1.5px at 45% 55%, var(--primary-color) 100%, transparent);
-  background-size: 250px 250px;
-  opacity: 0.7;
-  animation: stars-move-3 120s linear infinite;
+  animation: stars-move-2 180s linear infinite;
 }
 
 @keyframes stars-move-1 {
-  from { background-position: 0 0; }
-  to { background-position: 200px -200px; }
+  to { transform: translateY(-250px); }
 }
 
 @keyframes stars-move-2 {
-  from { background-position: 0 0; }
-  to { background-position: -300px 300px; }
+  to { transform: translateY(-300px); }
 }
 
-@keyframes stars-move-3 {
-  from { background-position: 0 0; }
-  to { background-position: 250px 250px; }
-}
+/* Optimize animations for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .stars-1,
+  .stars-2,
+  .circle-1,
+  .circle-2 {
+    animation: none;
+  }
 
-/* Twinkle animation is now combined with movement */
-.stars-1, .stars-2, .stars-3 {
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-}
+  .stars-container {
+    display: none;
+  }
 
-@keyframes twinkle {
-  0%, 100% { opacity: 0.4; }
-  50% { opacity: 1; }
+  .background-effects {
+    opacity: 0.2;
+  }
 }
 
 /* Section Background Updates */
@@ -2253,4 +2234,359 @@ p {
   background-size: 300px 300px;
   opacity: 0.1;
   animation: stars-move-2 150s linear infinite;
+}
+
+/* About Section Styles */
+.about-section {
+  background: var(--dark-bg);
+  position: relative;
+  overflow: hidden;
+  padding: 80px 0;
+}
+
+.about-content {
+  position: relative;
+  z-index: 2;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
+  margin-top: 2rem;
+}
+
+.about-text {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.lead-text {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  margin-bottom: 2rem;
+  line-height: 1.5;
+}
+
+.text-content p {
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.service-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 2rem;
+  transition: all 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+  border-color: var(--primary-color);
+  box-shadow: 0 10px 30px rgba(0, 245, 255, 0.1);
+}
+
+.service-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.service-card h3 {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.documents-section {
+  padding: 4rem 0;
+  background: var(--background-secondary);
+}
+
+.documents-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease-out;
+}
+
+.documents-grid.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.document-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  text-align: center;
+  transition: transform 0.3s ease;
+  text-decoration: none;
+  color: inherit;
+}
+
+.document-card:hover {
+  transform: translateY(-5px);
+}
+
+.pdf-icon {
+  margin-bottom: 1rem;
+  color: var(--accent-color);
+}
+
+.document-card h3 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+/* Tokenomics Content */
+.tokenomics-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.token-overview {
+  text-align: center;
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+.overview-text {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  max-width: 800px;
+  margin: 1rem auto;
+}
+
+.token-details-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.token-details {
+  width: 100%;
+  max-width: 800px;
+}
+
+.details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.detail-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+}
+
+.detail-label {
+  color: var(--text-gray);
+  font-size: 0.9rem;
+}
+
+.detail-value {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+.distribution-section {
+  margin-top: 2rem;
+}
+
+.distribution-chart {
+  margin-top: 1.5rem;
+}
+
+.distribution-item {
+  margin-bottom: 1.5rem;
+}
+
+.distribution-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.distribution-bar-wrapper {
+  height: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.distribution-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  border-radius: 6px;
+  transition: width 1s ease-out;
+}
+
+.token-features {
+  margin-top: 2rem;
+  padding: 2rem;
+}
+
+.features-content {
+  margin-top: 1.5rem;
+}
+
+.features-list {
+  margin-top: 1.5rem;
+}
+
+.features-list ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 1rem;
+}
+
+.features-list li {
+  margin-bottom: 0.75rem;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.features-list li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--primary-color);
+}
+
+/* Updated General Description Styles */
+.description-section {
+  padding: 1rem;
+}
+
+.main-description {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: var(--text-light);
+  margin-bottom: 2rem;
+  padding: 1rem;
+  border-left: 3px solid var(--primary-color);
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 0 12px 12px 0;
+}
+
+.tech-description {
+  margin: 2rem 0;
+}
+
+.tech-title, .goals-title {
+  color: var(--primary-color);
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+}
+
+.networks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+networks-grid span {
+  padding: 0.75rem 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+networks-grid span:hover {
+  border-color: var(--primary-color);
+  transform: translateY(-2px);
+}
+
+.goals-section {
+  margin: 3rem 0;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 12px;
+}
+
+.goals-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.goal-item {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+.goal-marker {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  padding: 0.5rem 1rem;
+  background: rgba(0, 245, 255, 0.1);
+  border-radius: 8px;
+  min-width: 48px;
+  text-align: center;
+}
+
+.closing-section {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.closing-text {
+  margin-top: 1.5rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  padding: 1rem;
+  border-radius: 12px;
+  background: rgba(0, 245, 255, 0.05);
+}
+
+.overview-section {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 4rem;
+}
+
+.overview-title {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  font-weight: 700;
+}
+
+.overview-content {
+  color: var(--text-gray);
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+.overview-content p {
+  margin-bottom: 1.5rem;
+}
+
+.overview-content p:last-child {
+  margin-bottom: 0;
 }
