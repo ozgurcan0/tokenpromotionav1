@@ -1,3 +1,4 @@
+![resim](https://github.com/user-attachments/assets/f5371b88-9342-4084-b062-7d35e52c1b6c)
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
